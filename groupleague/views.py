@@ -2,24 +2,37 @@ from django.shortcuts import render
 
 from .models import Nation, Game
 
+def initial():
+    nations = Nation.objects.all()
+    for nation in nations:
+        nation.points = 0
+        nation.wins = 0
+        nation.loses = 0
+        nation.draws = 0
+        nation.get_goal = 0
+        nation.lost_goal = 0
+        nation.goal_diff = 0
+        nation.save()
+
+    games = Game.objects.all()
+    for game in games:
+        swap_result(game.team, game.team_score, game.opposite, game.opposite_score)
+
 
 def addresult_win(Nation):
     Nation.wins += 1
     Nation.points += 3
-    print(Nation.points)
 
 def addresult_lose(Nation):
     Nation.loses += 1
-    print(Nation.points)
 
 
 def addresult_draw(Nation):
     Nation.draws += 1
     Nation.points += 1
-    print(Nation.points)
 
 
-def apply_results(Nation, gget, glost):
+def apply_result(Nation, gget, glost):
     Nation.get_goal += gget
     Nation.lost_goal += glost
     Nation.goal_diff = Nation.get_goal - Nation.lost_goal
@@ -31,14 +44,12 @@ def apply_results(Nation, gget, glost):
         addresult_lose(Nation)
     Nation.save()
 
-
+def swap_result(team, team_score, oppo, oppo_score):
+    apply_result(team, team_score, oppo_score)
+    apply_result(oppo, oppo_score, team_score)
 
 def index(request):
-    games = Game.objects.all()
-    for game in games:
-        apply_results(game.team, game.team_score, game.opposite_score)
-
-
+    initial()
     return render(request, 'groupleague/index.html', {
         'nations': Nation.objects.all(),
     })
