@@ -23,20 +23,20 @@ def initial():
 
 def addresult_win(Nation):
     Nation.wins += 1
-    Nation.points += 3
+    Nation.points += 3  # win => add 3 points
 
 def addresult_lose(Nation):
-    Nation.loses += 1
+    Nation.loses += 1   # lose => add 0 point
 
 
 def addresult_draw(Nation):
     Nation.draws += 1
-    Nation.points += 1
+    Nation.points += 1  # draw => add 1 point
 
 
-def apply_result(Nation, gget, glost):
-    Nation.get_goal += gget
-    Nation.lost_goal += glost
+def apply_result(Nation, gget, glost):  # 試合結果をチーム成績に反映
+    Nation.get_goal += gget     # ADD gain
+    Nation.lost_goal += glost   # ADD lost
     Nation.goal_diff = Nation.get_goal - Nation.lost_goal
     if gget > glost:
         addresult_win(Nation)
@@ -45,10 +45,10 @@ def apply_result(Nation, gget, glost):
     else:
         addresult_lose(Nation)
     Nation.games += 1
-    Nation.percentage = round(Nation.wins / Nation.games, 3)
-    Nation.save()
+    Nation.percentage = round(Nation.wins / Nation.games, 3)    # Explode in *.***
+    Nation.save()   # Apply complete
 
-def swap_result(team, team_score, oppo, oppo_score):
+def swap_result(team, team_score, oppo, oppo_score):    # Apply to 2 team from 1 game
     apply_result(team, team_score, oppo_score)
     apply_result(oppo, oppo_score, team_score)
 
