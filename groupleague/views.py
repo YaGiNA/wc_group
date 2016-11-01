@@ -34,7 +34,7 @@ def addresult_draw(Nation):
     Nation.points += 1  # draw => add 1 point
 
 
-def apply_result(Nation, gget, glost):  # 試合結果をチーム成績に反映
+def apply_result(Nation, gget, glost):  # Apply to team stats from a result
     Nation.get_goal += gget     # ADD gain
     Nation.lost_goal += glost   # ADD lost
     Nation.goal_diff = Nation.get_goal - Nation.lost_goal
