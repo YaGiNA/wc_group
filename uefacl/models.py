@@ -32,10 +32,10 @@ class Game(models.Model):
         verbose_name = '試合'
         verbose_name_plural = '試合'
 
-    team = models.ForeignKey(Nation, related_name='team', default="")
-    team_score = models.IntegerField(default=0)
-    opposite = models.ForeignKey(Nation, related_name='oppo', default="")
-    opposite_score = models.IntegerField(default=0)
+    home = models.ForeignKey(Nation, related_name='home', default="")
+    home_score = models.IntegerField(default=0)
+    away = models.ForeignKey(Nation, related_name='away', default="")
+    away_score = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.team) + " vs. " + str(self.opposite)
+        return str(self.home) + " vs. " + str(self.away)
