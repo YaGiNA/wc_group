@@ -19,8 +19,10 @@ class Nation(models.Model):
 
 
 class Game(models.Model):
-    game_card = models.ForeignKey(Nation, Nation)
-    game_score = (models.IntegerField(default=0), models.IntegerField(default=0))
+    home = models.ForeignKey(Nation, related_name='home_nation_name', default = "")
+    home_score = models.IntegerField(default=0)
+    away = models.ForeignKey(Nation, related_name='away_nation_name', default = "")
+    away_score = models.IntegerField(default=0)
     # 対戦カード、スコアをタプルで定義する
 
     def __str__(self):
