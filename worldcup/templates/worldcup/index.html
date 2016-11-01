@@ -1,8 +1,13 @@
+{% load staticfiles %}
 <html>
+<head> <!-- ← 追加 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" /> <!-- ← 追加 -->
+</head> <!-- ← 追加 -->
 
 <body>
-    <table border="1">
+    <table border="1" class="table table-striped">
         <tr>
+            <th>順位</th>
             <th>国</th>
             <th>勝ち点</th>
             <th>試</th>
@@ -16,6 +21,7 @@
         </tr>
         {% for nation in nations %}
         <tr>
+            <td>{{ nation.standings }}</td>
             <td>{{ nation.nation_name }}</td>
             <td>{{ nation.points }}</td>
             <td>{{ nation.games }}</td>

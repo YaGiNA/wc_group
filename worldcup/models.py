@@ -9,6 +9,8 @@ class Nation(models.Model):
         ordering = ['-points', '-goal_diff', '-get_goal']
         # priority: points -> goal_diff -> get_goal
 
+
+    standings = models.IntegerField(default=0)
     nation_name = models.CharField(max_length=200)
     points = models.IntegerField(default=0)
     games = models.IntegerField(default=0)

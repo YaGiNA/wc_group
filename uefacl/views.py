@@ -19,8 +19,9 @@ def initial():
 
     games = Game.objects.all()
     for game in games:
-        swap_result(game.team, game.team_score,
-                    game.opposite, game.opposite_score)
+        swap_result(game.home, game.home_score,
+                    game.away, game.away_score)
+    apply_standings()
 
 
 def addresult_win(Nation):
@@ -37,7 +38,7 @@ def addresult_draw(Nation):
     Nation.points += 1  # draw => add 1 point
 
 
-def apply_result(Nation, gget, glost):  # Apply to team stats from a result
+def apply_result(Nation, gget, glost):  # Apply to home stats from a result
     Nation.get_goal += gget     # ADD gain
     Nation.lost_goal += glost   # ADD lost
     Nation.goal_diff = Nation.get_goal - Nation.lost_goal
@@ -53,13 +54,22 @@ def apply_result(Nation, gget, glost):  # Apply to team stats from a result
     Nation.save()   # Apply complete
 
 
-def swap_result(team, team_score, oppo, oppo_score):    # Apply to 2 team from 1 game
-    apply_result(team, team_score, oppo_score)
-    apply_result(oppo, oppo_score, team_score)
+def swap_result(home, home_score, oppo, oppo_score):    # Apply to 2 home from 1 game
+    apply_result(home, home_score, oppo_score)
+    apply_result(oppo, oppo_score, home_score)
+
+
+def apply_standings():
+    nations = Nation.objects.all()
+    i = 1
+    for nation in nations:
+        nation.standings = i
+        i += 1
+        nation.save()
 
 
 def index(request):
     initial()
-    return render(request, 'groupleague/index.html', {
+    return render(request, 'worldcup/index.html', {
         'nations': Nation.objects.all(),
     })
