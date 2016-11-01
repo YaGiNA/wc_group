@@ -54,7 +54,8 @@ def apply_result(Nation, gget, glost):  # Apply to team stats from a result
     Nation.save()   # Apply complete
 
 
-def swap_result(team, team_score, oppo, oppo_score):    # Apply to 2 team from 1 game
+def swap_result(team, team_score, oppo, oppo_score):
+    # Apply to 2 team from 1 game
     apply_result(team, team_score, oppo_score)
     apply_result(oppo, oppo_score, team_score)
 
