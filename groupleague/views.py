@@ -3,11 +3,6 @@ from django.shortcuts import render
 from .models import Nation, Game
 
 
-def index(request):
-    return render(request, 'groupleague/index.html', {
-        'nations': Nation.objects.all(),
-    })
-
 def addresult_win(Nation):
     Nation.wins += 1
     points += 3
@@ -29,3 +24,9 @@ def apply_results(Nation, gget, glost):
         addresult_draw()
     else:
         addresult_lose()
+
+
+def index(request):
+    return render(request, 'groupleague/index.html', {
+        'nations': Nation.objects.all(),
+    })
