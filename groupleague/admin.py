@@ -4,5 +4,15 @@ from django.contrib import admin
 from .models import Nation, Game
 
 
-admin.site.register(Nation)
+class GamesInline(admin.StackedInline):
+    model = Game
+    extra = 3
+    fk_name = 'team'
+
+
+class NationAdmin(admin.ModelAdmin):
+    inlines = [GamesInline]
+
+
+admin.site.register(Nation, NationAdmin)
 admin.site.register(Game)
