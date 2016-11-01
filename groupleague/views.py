@@ -6,9 +6,11 @@ def initial():
     nations = Nation.objects.all()
     for nation in nations:
         nation.points = 0
+        nation.games = 0
         nation.wins = 0
         nation.loses = 0
         nation.draws = 0
+        nation.percentage = 0
         nation.get_goal = 0
         nation.lost_goal = 0
         nation.goal_diff = 0
@@ -42,6 +44,8 @@ def apply_result(Nation, gget, glost):
         addresult_draw(Nation)
     else:
         addresult_lose(Nation)
+    Nation.games += 1
+    Nation.percentage = round(Nation.wins / Nation.games, 3)
     Nation.save()
 
 def swap_result(team, team_score, oppo, oppo_score):

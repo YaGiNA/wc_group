@@ -9,9 +9,11 @@ class Nation(models.Model):
 
     nation_name = models.CharField(max_length=200)
     points =      models.IntegerField(default=0)
+    games =        models.IntegerField(default=0)
     wins =        models.IntegerField(default=0)
     loses =       models.IntegerField(default=0)
     draws =       models.IntegerField(default=0)
+    percentage =  models.FloatField(default=0.000)
     get_goal =    models.IntegerField(default=0)
     lost_goal =   models.IntegerField(default=0)
     goal_diff =   models.IntegerField(default=0)
