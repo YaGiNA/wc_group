@@ -4,5 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),  # urlとviewの結びつけ
+    url(r'^$', views.index, name='index'),
 ]
