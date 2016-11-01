@@ -5,7 +5,7 @@ class Nation(models.Model):
     class Meta:
         verbose_name = '参加国'
         verbose_name_plural = '参加国ら'
-        ordering = ['-points', '-goal_diff', 'get_goal']    # 勝ち点・得失点差・得点数で順位が決まる
+        ordering = ['-points', '-goal_diff', '-get_goal']    # 勝ち点・得失点差・得点数で順位が決まる
 
 
     nation_name = models.CharField(max_length=200)
