@@ -1,6 +1,6 @@
  from django.db import models
 
-class Nations(models.Model):
+class Nation(models.Model):
     nation_name = models.CharField(max_length=200)
     wins =        models.IntegerField(default=0)
     loses =       models.IntegerField(default=0)
