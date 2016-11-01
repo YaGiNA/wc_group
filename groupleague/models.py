@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Nation(models.Model):
+    class Meta:
+        verbose_name = '参加国'
+        verbose_name_plural = '参加国ら'
+
     nation_name =     models.CharField(max_length=200)
     wins =            models.IntegerField(default=0)
     loses =           models.IntegerField(default=0)
@@ -18,5 +22,6 @@ class Game(models.Model):
     game_card = models.ForeignKey(Nation, Nation)
     game_score = (models.IntegerField(default=0), models.IntegerField(default=0))
     # 対戦カード、スコアをタプルで定義する
+
     def __str__(self):
         return " vs. ".join([str(x) for x in self.game_card()])
