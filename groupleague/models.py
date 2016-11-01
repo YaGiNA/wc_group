@@ -26,4 +26,4 @@ class Game(models.Model):
     # 対戦カード、スコアをタプルで定義する
 
     def __str__(self):
-        return " vs. ".join([str(x) for x in self.game_card()])
+        return str(self.home) + " vs. " + str(self.away)
