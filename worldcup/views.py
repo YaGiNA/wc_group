@@ -60,6 +60,6 @@ def swap_result(team, team_score, oppo, oppo_score):    # Apply to 2 team from 1
 
 def index(request):
     initial()
-    return render(request, 'groupleague/index.html', {
+    return render(request, 'worldcup/index.html', {
         'nations': Nation.objects.all(),
     })
