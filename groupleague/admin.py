@@ -6,7 +6,7 @@ from .models import Nation, Game
 
 class GamesInline(admin.StackedInline):
     model = Game
-    extra = 3
+    extra = len(Nation.objects.all()) - 1
     fk_name = 'team'
 
 

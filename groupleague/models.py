@@ -21,9 +21,9 @@ class Nation(models.Model):
 
 
 class Game(models.Model):
-    team = models.ForeignKey(Nation, related_name='team_nation', default = "")
+    team = models.ForeignKey(Nation, related_name='team', default = "")
     team_score = models.IntegerField(default=0)
-    opposite = models.ForeignKey(Nation, related_name='oppo_nation', default = "")
+    opposite = models.ForeignKey(Nation, related_name='oppo', default = "")
     opposite_score = models.IntegerField(default=0)
     # 対戦カード、スコアをタプルで定義する
 
