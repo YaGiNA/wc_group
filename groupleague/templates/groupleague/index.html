@@ -14,13 +14,13 @@
     {% for nation in nations %}
     <tr>
       <td>{{ nation.nation_name }}</td>
-      <td>{{ points }}</td>
+      <td>{{ nation.points }}</td>
       <td>{{ nation.wins }}</td>
       <td>{{ nation.loses }}</td>
       <td>{{ nation.draws }}</td>
       <td>{{ nation.get_goal }}</td>
       <td>{{ nation.lost_goal }}</td>
-      <td>{{ goal_diff }}</td>
+      <td>{{ nation.goal_diff }}</td>
     </tr>
     {% endfor %}
   </table>
