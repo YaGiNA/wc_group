@@ -1,0 +1,28 @@
+<html>
+<body>
+  <table border="1">
+    <tr>
+      <th>国</th>
+      <th>勝ち点</th>
+      <th>勝</th>
+      <th>負</th>
+      <th>分</th>
+      <th>得</th>
+      <th>失</th>
+      <th>得失点差</th>
+    </tr>
+    {% for nation in nations %}
+    <tr>
+      <td>{{ nation.nation_name }}</td>
+      <td>{{ nation.points }}</td>
+      <td>{{ nation.wins }}</td>
+      <td>{{ nation.loses }}</td>
+      <td>{{ nation.draws }}</td>
+      <td>{{ nation.get_goal }}</td>
+      <td>{{ nation.lost_goal }}</td>
+      <td>{{ nation.goal_diff }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
