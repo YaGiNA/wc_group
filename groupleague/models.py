@@ -6,6 +6,7 @@ class Nation(models.Model):
         verbose_name = '参加国'
         verbose_name_plural = '参加国ら'
 
+
     nation_name =     models.CharField(max_length=200)
     wins =            models.IntegerField(default=0)
     loses =           models.IntegerField(default=0)
@@ -19,10 +20,10 @@ class Nation(models.Model):
 
 
 class Game(models.Model):
-    home = models.ForeignKey(Nation, related_name='home_nation_name', default = "")
-    home_score = models.IntegerField(default=0)
-    away = models.ForeignKey(Nation, related_name='away_nation_name', default = "")
-    away_score = models.IntegerField(default=0)
+    team = models.ForeignKey(Nation, related_name='home_nation_name', default = "")
+    team_score = models.IntegerField(default=0)
+    opposite = models.ForeignKey(Nation, related_name='away_nation_name', default = "")
+    opposite_score = models.IntegerField(default=0)
     # 対戦カード、スコアをタプルで定義する
 
     def __str__(self):
